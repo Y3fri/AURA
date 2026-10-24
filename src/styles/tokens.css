@@ -1,0 +1,39 @@
+/* Aura — tokens de diseño (tema oscuro) */
+
+:root {
+  /* Color */
+  --bg-0: #05050a;
+  --bg-1: #0a0a14;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-strong: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.12);
+  --text-1: #f4f2ee;
+  --text-2: rgba(244, 242, 238, 0.66);
+  --text-3: rgba(244, 242, 238, 0.42);
+  --accent: #f2a93b; /* lo cambia la paleta activa */
+  --accent-glow: color-mix(in srgb, var(--accent) 38%, transparent);
+  --danger: #ff5d73;
+  --recording: #ff3b5c;
+
+  /* Tipografía */
+  --font-display: 'Syne', 'Trebuchet MS', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  /* Espaciado y radios */
+  --gap-1: 0.35rem;
+  --gap-2: 0.6rem;
+  --gap-3: 1rem;
+  --gap-4: 1.5rem;
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+
+  /* Tamaños */
+  --hud-width: 260px;
+  --preview-w: 168px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-med: 320ms;
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Aura — instrumento musical de partículas</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta
+      name="description"
+      content="Aura: toca música con las manos frente a la cámara. Nube de partículas 3D, gestos y sonido, todo procesado en tu dispositivo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/components.css" />
+  </head>
+  <body>
+    <div id="scene-root" aria-hidden="true"></div>
+
+    <div id="ui-layer">
+      <header class="aura-header">
+        <p class="wordmark">Aura</p>
+        <p class="tagline">Instrumento de partículas</p>
+      </header>
+
+      <!-- Vista previa espejada de la cámara con los puntos de la mano -->
+      <div id="preview-wrap" hidden>
+        <canvas id="preview-overlay" width="168" height="126" aria-hidden="true"></canvas>
+        <span class="visually-hidden">Vista previa de la cámara</span>
+      </div>
+
+      <aside id="hud">
+        <div class="hud-panel">
+          <div class="hud-row">
+            <span id="hud-status" data-state="starting">
+              <span class="status-dot"></span>
+              <span class="status-label">En espera</span>
+            </span>
+            <span id="hud-note" aria-live="polite">—</span>
+          </div>
+          <div class="hud-row">
+            <span class="hud-label" id="hud-mode">Control por manos</span>
+            <span id="hud-loop" hidden>● Bucle activo</span>
+          </div>
+        </div>
+
+        <div class="hud-panel control-grid">
+          <label>
+            Paleta
+            <select id="ctl-palette" aria-label="Paleta de color"></select>
+          </label>
+          <label>
+            Escala
+            <select id="ctl-scale" aria-label="Escala musical"></select>
+          </label>
+          <label>
+            Volumen
+            <input id="ctl-volume" type="range" min="0" max="100" value="80" aria-label="Volumen" />
+          </label>
+          <div class="icon-buttons">
+            <button id="ctl-mute" class="chip-button" type="button" aria-pressed="false">Silenciar</button>
+            <button id="ctl-record" class="chip-button" type="button">
+              <span class="record-dot" aria-hidden="true"></span>
+              <span class="record-label">Grabar</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hud-panel" id="help-panel">
+          <span class="hud-label">Cómo tocar</span>
+          <ul id="help-list"></ul>
+        </div>
+      </aside>
+
+      <div id="notice" hidden role="status"></div>
+    </div>
+
+    <!-- Pantalla inicial -->
+    <section id="start-screen">
+      <div class="start-card">
+        <p class="eyebrow">Instrumento en vivo</p>
+        <h1>Aura</h1>
+        <p class="lead">
+          Una nube de miles de partículas que sigue tus manos. Levanta los dedos para tocar notas,
+          pellizca para concentrar la luz y abre la mano para explotar el sonido.
+        </p>
+        <ul>
+          <li>25.000 partículas</li>
+          <li>Dos manos</li>
+          <li>Sin tocar nada</li>
+        </ul>
+        <button id="start-button" class="primary-button" type="button">
+          <span class="button-label">Activar cámara y sonido</span>
+        </button>
+        <p class="privacy-note">
+          <strong>Privacidad:</strong> el vídeo se procesa en tu dispositivo y no se envía a ningún
+          servidor.
+        </p>
+        <p id="start-error" hidden></p>
+      </div>
+    </section>
+
+    <!-- Sin WebGL: mensaje claro en español -->
+    <section id="webgl-error" hidden>
+      <div>
+        <h2>Aura necesita WebGL</h2>
+        <p>
+          Tu navegador o equipo no permite renderizar gráficos 3D. Prueba con Chrome, Edge o Firefox
+          actualizados y vuelve a cargar la página.
+        </p>
+      </div>
+    </section>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
